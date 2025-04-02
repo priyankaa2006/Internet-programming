@@ -1,0 +1,14 @@
+h3 {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: cyan;
+}
+
+table {
+    border-color: green;
+}
+
+td {
+    font-size: 20pt;
+    color: magenta;
+}
