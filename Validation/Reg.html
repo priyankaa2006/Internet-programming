@@ -1,32 +1,30 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Registration</title>
+    <script>
+        function validateRegistration() {
+            var name = document.forms["regForm"]["name"].value;
+            var email = document.forms["regForm"]["email"].value;
+            var password = document.forms["regForm"]["password"].value;
 
-<body bgcolor=”pink”><br><br>
-    <script language=”javascript”>
-        var str = document.myform.phno.value;
-        var x;
-        if (flag == 1) {
-            alert("VALID INPUT");
+            if (name == "" || email == "" || password == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+            return true;
         }
-        else {
-            alert("INVALID INPUT");
-            document.myform.focus();
-        }
-}
     </script>
-    <form name="myform">
-        <div align="center">
-            <pre>
-NAME :<input type="text" name="name"><br>
-ADDRESS :<input type="type" name="addr"><br>
-CONTACT NUMBER:<iput type="text" name="phno"><br>
-LOGINID :<input type="text" name="id"><br>
-PASSWORD :<input type="password" name="pwd"></pre><br><br>
-        </div>
-        <br><br>
-        <div align="center">
-            <input type="submit" value="ok" onClick="validate()">&nbsp;&nbsp;&nbsp;
-            <input type="reset" value="clear">
-    </form>
-</body>
+</head>
+<body>
 
+<h2>Registration Form</h2>
+<form name="regForm" action="profile.html" onsubmit="return validateRegistration()" method="post">
+    Name: <input type="text" name="name"><br><br>
+    Email: <input type="text" name="email"><br><br>
+    Password: <input type="password" name="password"><br><br>
+    <input type="submit" value="Register">
+</form>
+
+</body>
 </html>
