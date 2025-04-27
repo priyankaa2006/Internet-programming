@@ -1,35 +1,28 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Login</title>
+    <script>
+        function validateLogin() {
+            var username = document.forms["loginForm"]["username"].value;
+            var password = document.forms["loginForm"]["password"].value;
 
-<body bgcolor=”white”><br><br><br>
-    <script language=”javascript”>
-        function validate() {
-            11
-            var flag = 1;
-            if (document.myform.id.value == "" || document.myform.pwd.value == "") {
-                alert("LoginId and Password must be filled")
-                flag = 0;
+            if (username == "" || password == "") {
+                alert("Username and Password must be filled out");
+                return false;
             }
-            if (flag == 1) {
-                alert(“VALID INPUT”);
-                window.open("catalog.html", "right");
-            }
-            else {
-                alert(“INVALID INPUT”);
-                //document.myform.focus();
-            }
+            return true;
         }
     </script>
-    <form name=”myform”>
-        <div align=”center”>
-            <pre>
-LOGIN ID:<input type=”text” name=”id”><br>
-PASSWORD:<input type=”password” name=”pwd”>
-<br><br>
-</pre>
-            <input type=”button” value=”ok” onClick=”validate()”>
-            <input type=”reset” value=”clear”>
-        </div>
-    </form>
-</body>
+</head>
+<body>
 
+<h2>Login</h2>
+<form name="loginForm" action="profile.html" onsubmit="return validateLogin()" method="post">
+    Username: <input type="text" name="username"><br><br>
+    Password: <input type="password" name="password"><br><br>
+    <input type="submit" value="Login">
+</form>
+
+</body>
 </html>
