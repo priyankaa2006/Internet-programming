@@ -1,55 +1,38 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Payment</title>
+    <script>
+        function validatePayment() {
+            var cardNumber = document.forms["payForm"]["cardNumber"].value;
+            var expiry = document.forms["payForm"]["expiry"].value;
+            var cvv = document.forms["payForm"]["cvv"].value;
 
-<body bgcolor="white"><br><br><br>
-    <script language="javascript">
-        function validate() {
-            var flag = 1;
-            if (document.myform.id.value == "" ||
-                document.myform.pwd.value == "" ||
-                document.myform.amount.value == "" ||
-                document.myform.num.value == "") {
-                13
-                flag = 0;
+            if (cardNumber == "" || expiry == "" || cvv == "") {
+                alert("All payment fields must be filled out");
+                return false;
             }
-            var str = document.myform.amount.value;
-            var x;
-            for (var i = 0; i < str.length; i++) {
-                x = str.substr(i, 1);
-                if (!(x <= 9)) {
-                    flag = 0;
-                    break;
-                }
+            if (isNaN(cardNumber) || cardNumber.length != 16) {
+                alert("Enter valid 16-digit card number");
+                return false;
             }
-            str = document.myform.num.value;
-            for (var i = 0; i < str.lenght; i++) {
-                x = str.substr(i, 1);
-                if (!(x <= 9)) {
-                    flag = 0;
-                    break;
-                }
+            if (isNaN(cvv) || cvv.length != 3) {
+                alert("Enter valid 3-digit CVV");
+                return false;
             }
-            if (flag == 1) {
-                alert("VALID INPUT");
-            }
-            else {
-                alert("INVALID INPUT");
-                document.myform.focus();
-            }
+            return true;
         }
     </script>
-    <form name="myform">
-        <div align="center">
-            <pre>
-LOGIN ID :<input type="text" name="id"><br>
-PASSWORD :<input type="password" name="pwd"><br>
-AMOUNT :<input type="text" name="amount"><br>
-CREDITCARDNUMBER:<input type="PASSWORD" name="num+"><br></pre><br><br>
-        </div>
-        <br><br>
-        <div align="center">
-            <input type="submit" value="ok" onClick="validate()">
-            <input type="reset" value="clear">
-    </form>
-</body>
+</head>
+<body>
 
+<h2>Payment Form</h2>
+<form name="payForm" action="success.html" onsubmit="return validatePayment()" method="post">
+    Card Number: <input type="text" name="cardNumber"><br><br>
+    Expiry Date: <input type="text" name="expiry" placeholder="MM/YY"><br><br>
+    CVV: <input type="password" name="cvv"><br><br>
+    <input type="submit" value="Pay">
+</form>
+
+</body>
 </html>
